@@ -35,11 +35,11 @@ namespace Rpscissors.Models
       }
       else if (Input1.ToLower() != "r" || Input1.ToLower() != "p" || Input1.ToLower() != "s")
       {
-        throw new Exception("Illegal Move!");
+        throw new ArgumentException("Illegal Move!");
       }
       else if (Input2.ToLower() != "r" || Input2.ToLower() != "p" || Input2.ToLower() != "s")
       {
-        throw new Exception("Illegal Move!");
+        throw new ArgumentException("Illegal Move!");
       }
       else
       {

@@ -13,9 +13,16 @@ namespace Rpscissors
       Console.WriteLine("Enter the ring? (y/n)");
 
       string input1 = Console.ReadLine();
-      if (input1.ToLower() == "y") 
+      if (input1.ToLower() == "y")
       {
-        GamePlay();
+        try
+        {
+          GamePlay();
+        }
+        catch
+        {
+          ErrorHandle();
+        }
       }
       else
       {
@@ -28,47 +35,69 @@ namespace Rpscissors
         else
         {
           Console.WriteLine("you've chosen wisely, young warrior");
-          GamePlay();
+          try
+          {
+            GamePlay();
+          }
+          catch
+          {
+            ErrorHandle();
+          }
         }
+      }
+      Console.WriteLine("Would you like a rematch? (y/n)");
+      string rematch = Console.ReadLine();
+      if (rematch.ToLower() == "y")
+      {
+        GamePlay();
+      }
+      else
+      {
+        Console.WriteLine("Well fought. Come back when you're stronger!");
       }
     }
     static void GamePlay()
     {
-      {
       Console.WriteLine("Player 1, throw thy hand");
       Console.WriteLine("'r'= rock");
       Console.WriteLine("'p' = paper");
       Console.WriteLine("'s' = scissors");
-      string handThrow1 = CatchHands();
+      string handThrow1 = CatchHands1();
       Console.ResetColor();
       Console.WriteLine("hmmm interesting choice...");
-      }
+
       Console.WriteLine("Player 2, throw thy hand");
       Console.WriteLine("'r'= rock");
       Console.WriteLine("'p' = paper");
       Console.WriteLine("'s' = scissors");
-      string handThrow2 = CatchHands();
+      string handThrow2 = CatchHands2();
       Console.ResetColor();
       Console.WriteLine("unorthodox...");
       Game newGame = new Game(handThrow1, handThrow2);
       Console.WriteLine(newGame.DeclareWinner());
+      Console.WriteLine("Best 2 out of 3? (y/n)");
     }
-    static string CatchHands()
+    static string CatchHands1()
     {
       Console.BackgroundColor = ConsoleColor.Cyan;
       Console.ForegroundColor = ConsoleColor.Cyan;
       string handThrow = Console.ReadLine();
-      if (handThrow.ToLower() != "r" || handThrow.ToLower() != "p" || handThrow.ToLower() != "s")
-      {
-        Console.ResetColor();
-        Console.WriteLine("Illegal move! Try again!");
-        CatchHands();
-      }
-      else
-      {
       return handThrow;
-      }
-      
+    }
+    static string CatchHands2()
+    {
+      Console.BackgroundColor = ConsoleColor.Cyan;
+      Console.ForegroundColor = ConsoleColor.Cyan;
+      string handThrow = Console.ReadLine();
+      return handThrow;
+    }
+    static void ErrorHandle()
+    {
+      Console.ResetColor();
+      Console.WriteLine("Illegal move detected. Stay thy hands!");
+      Console.WriteLine("Resetting Ring...");
+      Console.WriteLine("No funny business... I'm watching you...");
+      GamePlay();
     }
   }
 }
