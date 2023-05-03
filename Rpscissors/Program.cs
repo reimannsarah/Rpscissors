@@ -74,6 +74,7 @@ namespace Rpscissors
       else
       {
         Console.WriteLine("Well fought. Come back when you're stronger!");
+        Console.WriteLine($"{Banner.Goodbye}");
       }
     }
     static string CatchHands1()
