@@ -45,16 +45,6 @@ namespace Rpscissors
           }
         }
       }
-      Console.WriteLine("Would you like a rematch? (y/n)");
-      string rematch = Console.ReadLine();
-      if (rematch.ToLower() == "y")
-      {
-        GamePlay();
-      }
-      else
-      {
-        Console.WriteLine("Well fought. Come back when you're stronger!");
-      }
     }
     static void GamePlay()
     {
@@ -75,7 +65,16 @@ namespace Rpscissors
       Console.WriteLine("unorthodox...");
       Game newGame = new Game(handThrow1, handThrow2);
       Console.WriteLine(newGame.DeclareWinner());
-      Console.WriteLine("Best 2 out of 3? (y/n)");
+      Console.WriteLine("Would you like a rematch? (y/n)");
+      string rematch = Console.ReadLine();
+      if (rematch.ToLower() == "y")
+      {
+        GamePlay();
+      }
+      else
+      {
+        Console.WriteLine("Well fought. Come back when you're stronger!");
+      }
     }
     static string CatchHands1()
     {
@@ -94,7 +93,7 @@ namespace Rpscissors
     static void ErrorHandle()
     {
       Console.ResetColor();
-      Console.WriteLine("Illegal move detected. Stay thy hands!");
+      Console.WriteLine("Illegal move detected! Stay thy hands!");
       Console.WriteLine("Resetting Ring...");
       Console.WriteLine("No funny business... I'm watching you...");
       GamePlay();
