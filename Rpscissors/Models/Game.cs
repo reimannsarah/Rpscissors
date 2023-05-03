@@ -12,5 +12,23 @@ namespace Rpscissors.Models
       Input1 = choice1;
       Input2 = choice2;
     }
+    public string DeclareWinner()
+    {
+      string rock = "rock";
+      string paper = "paper";
+      // string scissors = "scissors";
+      if (Input1.ToLower() == rock && Input2.ToLower() == paper)
+      {
+        return "Player 2 Wins";
+      }
+      else if (Input1.ToLower() == Input2.ToLower())
+      {
+        return "TIE GAME";
+      }
+      else
+      {
+        return "Player1 Wins";
+      }
+    }
   }
 }
